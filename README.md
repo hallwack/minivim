@@ -117,118 +117,94 @@ This section documents the explicit keymaps defined in this config. It does not 
 
 ### Global Keymaps
 
-#### Editing
-
-- `x` `<leader>v` - better paste without overwriting the unnamed register
-- `i` `jj` - exit insert mode
-- `v` `aa` - exit visual mode
-- `n` `<A-j>` - move current line down
-- `n` `<A-k>` - move current line up
-- `i` `<A-j>` - move current line down from insert mode
-- `i` `<A-k>` - move current line up from insert mode
-- `v` `<A-j>` - move selected text down
-- `v` `<A-k>` - move selected text up
-- `v` `J` - move selected text down
-- `v` `K` - move selected text up
-- `n` `==` - select the whole buffer
-- `n` `gl` - go to end of line
-- `n` `gh` - go to start of line
-- `n` `dm` - delete a mark after prompting for the mark character
-
-#### Tabs and Windows
-
-- `n` `<Tab>` - next tab
-- `n` `<S-Tab>` - previous tab
-- `n` `<leader>tn` - open a new tab
-- `n` `<C-h>` - move to left window
-- `n` `<C-l>` - move to right window
-- `n` `<C-j>` - move to lower window
-- `n` `<C-k>` - move to upper window
-- `n` `<C-M-h>` - resize window left
-- `n` `<C-M-l>` - resize window right
-- `n` `<C-M-j>` - resize window down
-- `n` `<C-M-k>` - resize window up
-
-#### Lists and Diagnostics
-
-- `n` `<leader>xl` - toggle the location list
-- `n` `<leader>xq` - toggle the quickfix list
-- `n` `[q` - previous quickfix item
-- `n` `]q` - next quickfix item
-- `n` `<leader>cd` - show diagnostics for the current line
-- `n` `]d` - next diagnostic
-- `n` `[d` - previous diagnostic
-- `n` `]e` - next error
-- `n` `[e` - previous error
-- `n` `]w` - next warning
-- `n` `[w` - previous warning
-
-#### Plugin Management
-
-- `n` `<leader>pp` - open the custom `:Pack` UI
-- `n` `<leader>pu` - update all plugins with `vim.pack.update()`
-- `n` `<leader>pd` - delete a plugin by name
-- `n` `<leader>R` - restart Neovim and restore a saved session
-
-#### Search and Explorer
-
-- `n` `<leader>ff` - file search via `fff.nvim`
-- `n` `<leader>sg` - live grep via `fff.nvim`
-- `n` `<leader>e` - open the Snacks explorer
-
-#### Formatting
-
-- `n`, `v` `<leader>fi` - open `ConformInfo`
-- `n`, `v` `<leader>fr` - format the current buffer
-
-#### Git
-
-- `n` `<leader>gb` - Git branches picker
-- `n` `<leader>gl` - Git log picker
-- `n` `<leader>gL` - Git log for current line
-- `n` `<leader>gs` - Git status picker
-- `n` `<leader>gS` - Git stash picker
-- `n` `git` - open LazyGit through Snacks
-- `n` `<leader>gc` - compare working tree against a chosen ref
-- `n` `<leader>gC` - compare two refs
-- `n` `<leader>gd` - compare working tree across files
-- `n` `<leader>gD` - compare staged changes across files
-- `n` `<leader>gV` - show file history
-- `v` `<leader>gv` - show line history for the current selection
-- `n` `<leader>gx` - close all VDiff windows
-- `n` `<leader>gm` - open merge-conflict view
-- `n` `<leader>gf` - diff current file against `HEAD`
-- `n` `<leader>gF` - diff current file against a chosen ref
-- `n` `<leader>g2` - compare two arbitrary files
-
-#### Terminal
-
-- `n` `<M-t>` - open a terminal
-- `n` `<M-w>` - toggle the terminal
+| Mode | Mode Description | Keymap | Description |
+| --- | --- | --- | --- |
+| `x` | Visual block/select | `<leader>v` | Better paste without overwriting the unnamed register |
+| `i` | Insert | `jj` | Exit insert mode |
+| `v` | Visual | `aa` | Exit visual mode |
+| `n` | Normal | `<A-j>` | Move current line down |
+| `n` | Normal | `<A-k>` | Move current line up |
+| `i` | Insert | `<A-j>` | Move current line down from insert mode |
+| `i` | Insert | `<A-k>` | Move current line up from insert mode |
+| `v` | Visual | `<A-j>` | Move selected text down |
+| `v` | Visual | `<A-k>` | Move selected text up |
+| `v` | Visual | `J` | Move selected text down |
+| `v` | Visual | `K` | Move selected text up |
+| `n` | Normal | `==` | Select the whole buffer |
+| `n` | Normal | `gl` | Go to end of line |
+| `n` | Normal | `gh` | Go to start of line |
+| `n` | Normal | `dm` | Delete a mark after prompting for the mark character |
+| `n` | Normal | `<Tab>` | Next tab |
+| `n` | Normal | `<S-Tab>` | Previous tab |
+| `n` | Normal | `<leader>tn` | Open a new tab |
+| `n` | Normal | `<C-h>` | Move to left window |
+| `n` | Normal | `<C-l>` | Move to right window |
+| `n` | Normal | `<C-j>` | Move to lower window |
+| `n` | Normal | `<C-k>` | Move to upper window |
+| `n` | Normal | `<C-M-h>` | Resize window left |
+| `n` | Normal | `<C-M-l>` | Resize window right |
+| `n` | Normal | `<C-M-j>` | Resize window down |
+| `n` | Normal | `<C-M-k>` | Resize window up |
+| `n` | Normal | `<leader>xl` | Toggle the location list |
+| `n` | Normal | `<leader>xq` | Toggle the quickfix list |
+| `n` | Normal | `[q` | Previous quickfix item |
+| `n` | Normal | `]q` | Next quickfix item |
+| `n` | Normal | `<leader>cd` | Show diagnostics for the current line |
+| `n` | Normal | `]d` | Next diagnostic |
+| `n` | Normal | `[d` | Previous diagnostic |
+| `n` | Normal | `]e` | Next error |
+| `n` | Normal | `[e` | Previous error |
+| `n` | Normal | `]w` | Next warning |
+| `n` | Normal | `[w` | Previous warning |
+| `n` | Normal | `<leader>pp` | Open the custom `:Pack` UI |
+| `n` | Normal | `<leader>pu` | Update all plugins with `vim.pack.update()` |
+| `n` | Normal | `<leader>pd` | Delete a plugin by name |
+| `n` | Normal | `<leader>R` | Restart Neovim and restore a saved session |
+| `n` | Normal | `<leader>ff` | File search via `fff.nvim` |
+| `n` | Normal | `<leader>sg` | Live grep via `fff.nvim` |
+| `n` | Normal | `<leader>e` | Open the Snacks explorer |
+| `n`, `v` | Normal, Visual | `<leader>fi` | Open `ConformInfo` |
+| `n`, `v` | Normal, Visual | `<leader>fr` | Format the current buffer |
+| `n` | Normal | `<leader>gb` | Git branches picker |
+| `n` | Normal | `<leader>gl` | Git log picker |
+| `n` | Normal | `<leader>gL` | Git log for current line |
+| `n` | Normal | `<leader>gs` | Git status picker |
+| `n` | Normal | `<leader>gS` | Git stash picker |
+| `n` | Normal | `git` | Open LazyGit through Snacks |
+| `n` | Normal | `<leader>gc` | Compare working tree against a chosen ref |
+| `n` | Normal | `<leader>gC` | Compare two refs |
+| `n` | Normal | `<leader>gd` | Compare working tree across files |
+| `n` | Normal | `<leader>gD` | Compare staged changes across files |
+| `n` | Normal | `<leader>gV` | Show file history |
+| `v` | Visual | `<leader>gv` | Show line history for the current selection |
+| `n` | Normal | `<leader>gx` | Close all VDiff windows |
+| `n` | Normal | `<leader>gm` | Open merge-conflict view |
+| `n` | Normal | `<leader>gf` | Diff current file against `HEAD` |
+| `n` | Normal | `<leader>gF` | Diff current file against a chosen ref |
+| `n` | Normal | `<leader>g2` | Compare two arbitrary files |
+| `n` | Normal | `<M-t>` | Open a terminal |
+| `n` | Normal | `<M-w>` | Toggle the terminal |
 
 ### Treesitter Textobjects
 
-#### Selection
-
-- `x`, `o` `af` - select function outer
-- `x`, `o` `if` - select function inner
-- `x`, `o` `ac` - select class outer
-- `x`, `o` `ic` - select class inner
-- `x`, `o` `aa` - select parameter outer
-- `x`, `o` `ia` - select parameter inner
-- `x`, `o` `ad` - select comment outer
-- `x`, `o` `as` - select statement outer
-
-#### Movement
-
-- `n`, `x`, `o` `]m` - next function start
-- `n`, `x`, `o` `[m` - previous function start
-- `n`, `x`, `o` `]]` - next class start
-- `n`, `x`, `o` `[[` - previous class start
-- `n`, `x`, `o` `]M` - next function end
-- `n`, `x`, `o` `[M` - previous function end
-- `n`, `x`, `o` `]o` - next loop
-- `n`, `x`, `o` `[o` - previous loop
+| Mode | Mode Description | Keymap | Description |
+| --- | --- | --- | --- |
+| `x`, `o` | Visual, Operator-pending | `af` | Select function outer |
+| `x`, `o` | Visual, Operator-pending | `if` | Select function inner |
+| `x`, `o` | Visual, Operator-pending | `ac` | Select class outer |
+| `x`, `o` | Visual, Operator-pending | `ic` | Select class inner |
+| `x`, `o` | Visual, Operator-pending | `aa` | Select parameter outer |
+| `x`, `o` | Visual, Operator-pending | `ia` | Select parameter inner |
+| `x`, `o` | Visual, Operator-pending | `ad` | Select comment outer |
+| `x`, `o` | Visual, Operator-pending | `as` | Select statement outer |
+| `n`, `x`, `o` | Normal, Visual, Operator-pending | `]m` | Next function start |
+| `n`, `x`, `o` | Normal, Visual, Operator-pending | `[m` | Previous function start |
+| `n`, `x`, `o` | Normal, Visual, Operator-pending | `]]` | Next class start |
+| `n`, `x`, `o` | Normal, Visual, Operator-pending | `[[` | Previous class start |
+| `n`, `x`, `o` | Normal, Visual, Operator-pending | `]M` | Next function end |
+| `n`, `x`, `o` | Normal, Visual, Operator-pending | `[M` | Previous function end |
+| `n`, `x`, `o` | Normal, Visual, Operator-pending | `]o` | Next loop |
+| `n`, `x`, `o` | Normal, Visual, Operator-pending | `[o` | Previous loop |
 
 ### Buffer-Local and Conditional Keymaps
 
@@ -238,69 +214,63 @@ These mappings only exist in certain contexts.
 
 Set when an LSP client attaches to the current buffer, with capability checks where noted:
 
-- `n` `<leader>ca` - code actions
-- `n` `<leader>cl` - run fix-all through Oxlint, ESLint, or generic LSP source fixes
-- `n` `<leader>rn` - rename symbol
-- `n` `K` - hover documentation, when supported
-- `n` `gd` - go to definition, when supported
-- `n` `grt` - go to type definition, when supported
-- `n` `grx` - run code lens, when supported
-- `n` `<leader>cw` - workspace diagnostics
+| Mode | Mode Description | Keymap | Description |
+| --- | --- | --- | --- |
+| `n` | Normal | `<leader>ca` | Code actions |
+| `n` | Normal | `<leader>cl` | Run fix-all through Oxlint, ESLint, or generic LSP source fixes |
+| `n` | Normal | `<leader>rn` | Rename symbol |
+| `n` | Normal | `K` | Hover documentation, when supported |
+| `n` | Normal | `gd` | Go to definition, when supported |
+| `n` | Normal | `grt` | Go to type definition, when supported |
+| `n` | Normal | `grx` | Run code lens, when supported |
+| `n` | Normal | `<leader>cw` | Workspace diagnostics |
 
 #### Gitsigns Attach
 
 Set for buffers where `gitsigns.nvim` attaches:
 
-- `n` `]h` - next hunk
-- `n` `[h` - previous hunk
-- `n` `]H` - last hunk
-- `n` `[H` - first hunk
-- `n`, `v` `<leader>ghs` - stage hunk
-- `n`, `v` `<leader>ghr` - reset hunk
-- `n` `<leader>ghS` - stage buffer
-- `n` `<leader>ghu` - undo stage hunk
-- `n` `<leader>ghR` - reset buffer
-- `n` `<leader>ghp` - preview hunk inline
-- `n` `<leader>ghb` - blame current line
-- `n` `<leader>ghB` - blame current buffer
-- `n` `<leader>ghd` - diff this
-- `n` `<leader>ghD` - diff this against `~`
-- `o`, `x` `ih` - select hunk
+| Mode | Mode Description | Keymap | Description |
+| --- | --- | --- | --- |
+| `n` | Normal | `]h` | Next hunk |
+| `n` | Normal | `[h` | Previous hunk |
+| `n` | Normal | `]H` | Last hunk |
+| `n` | Normal | `[H` | First hunk |
+| `n`, `v` | Normal, Visual | `<leader>ghs` | Stage hunk |
+| `n`, `v` | Normal, Visual | `<leader>ghr` | Reset hunk |
+| `n` | Normal | `<leader>ghS` | Stage buffer |
+| `n` | Normal | `<leader>ghu` | Undo stage hunk |
+| `n` | Normal | `<leader>ghR` | Reset buffer |
+| `n` | Normal | `<leader>ghp` | Preview hunk inline |
+| `n` | Normal | `<leader>ghb` | Blame current line |
+| `n` | Normal | `<leader>ghB` | Blame current buffer |
+| `n` | Normal | `<leader>ghd` | Diff this |
+| `n` | Normal | `<leader>ghD` | Diff this against `~` |
+| `o`, `x` | Operator-pending, Visual | `ih` | Select hunk |
 
 #### Pack UI
 
 Available only inside the custom `:Pack` floating window:
 
-- `n` `q` - close the Pack UI
-- `n` `<Esc>` - close the Pack UI
-- `n` `?` - toggle inline help
-- `n` `]]` - jump to next plugin
-- `n` `[[` - jump to previous plugin
-- `n` `<CR>` - toggle plugin detail view
-- `n` `U` - update all plugins
-- `n` `u` - update plugin under cursor
-- `n` `D` - delete inactive plugin under cursor
-- `n` `L` - open the pack log
+| Mode | Mode Description | Keymap | Description |
+| --- | --- | --- | --- |
+| `n` | Normal | `q` | Close the Pack UI |
+| `n` | Normal | `<Esc>` | Close the Pack UI |
+| `n` | Normal | `?` | Toggle inline help |
+| `n` | Normal | `]]` | Jump to next plugin |
+| `n` | Normal | `[[` | Jump to previous plugin |
+| `n` | Normal | `<CR>` | Toggle plugin detail view |
+| `n` | Normal | `U` | Update all plugins |
+| `n` | Normal | `u` | Update plugin under cursor |
+| `n` | Normal | `D` | Delete inactive plugin under cursor |
+| `n` | Normal | `L` | Open the pack log |
 
 #### Special Buffers
 
 For these filetypes, `q` is mapped buffer-locally to close the window and delete the buffer:
 
-- `PlenaryTestPopup`
-- `checkhealth`
-- `dbout`
-- `gitsigns-blame`
-- `grug-far`
-- `help`
-- `lspinfo`
-- `neotest-output`
-- `neotest-output-panel`
-- `neotest-summary`
-- `notify`
-- `qf`
-- `spectre_panel`
-- `startuptime`
-- `tsplayground`
+| Mode | Mode Description | Keymap | Description |
+| --- | --- | --- | --- |
+| `n` | Normal | `q` | Close special buffers for `PlenaryTestPopup`, `checkhealth`, `dbout`, `gitsigns-blame`, `grug-far`, `help`, `lspinfo`, `neotest-output`, `neotest-output-panel`, `neotest-summary`, `notify`, `qf`, `spectre_panel`, `startuptime`, and `tsplayground` |
 
 ## Plugin Management
 
