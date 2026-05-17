@@ -83,6 +83,7 @@ Core plugins currently configured here:
 - `vdiff.nvim`
 - `Comment.nvim`
 - `nvim-autopairs`
+- `which-key.nvim`
 
 Exact pinned revisions live in [`nvim-pack-lock.json`](~/.config/minivim/nvim-pack-lock.json).
 
