@@ -24,6 +24,7 @@ require("conform").setup({
 		xml = { "prettierd", stop_after_first = true }, -- oxfmt doesn't support xml
 		toml = { "taplo" },
 		nix = { "nixfmt" },
+		rust = { "rustfmt" },
 	},
 
 	formatters = {
@@ -103,8 +104,7 @@ require("conform").setup({
 
 				if root_monorepo then
 					local pkg_json = vim.fn.findfile("package.json", search_dir .. ";" .. root_monorepo)
-					local pkg_dir = pkg_json ~= "" and vim.fn.fnamemodify(pkg_json --[[@as string]], ":p:h")
-						or search_dir
+					local pkg_dir = pkg_json ~= "" and vim.fn.fnamemodify(pkg_json --[[@as string]], ":p:h") or search_dir
 
 					project_config = find_config_in_dir(pkg_dir) or find_config_in_dir(root_monorepo)
 				else

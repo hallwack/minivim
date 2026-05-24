@@ -1,3 +1,5 @@
+vim.lsp.enable("rust_analyzer")
+
 -- LSP
 local function augroup(name)
 	return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
@@ -42,7 +44,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			end
 
 			if client:supports_method("textDocument/inlayHint") then
-				vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+				vim.defer_fn(function()
+					vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+				end, 500)
 
 				if not vim.b[buf].inlay_hints_autocmd_set then
 					vim.api.nvim_create_autocmd("InsertEnter", {
