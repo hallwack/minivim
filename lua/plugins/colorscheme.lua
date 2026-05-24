@@ -1,9 +1,10 @@
 vim.pack.add({ "https://gitlab.com/motaz-shokry/gruvbox.nvim" })
 
 require("gruvbox").setup({
-  dark_variant = "hard",
+	dark_variant = "hard",
 	styles = {
-		transparency = false,
+		italic = false,
+		transparency = true,
 	},
 	before_highlight = function(_, highlight, _)
 		if highlight.undercurl then
@@ -13,5 +14,5 @@ require("gruvbox").setup({
 	end,
 })
 
--- vim.cmd("colorscheme gruvbox-light") 
+-- vim.cmd("colorscheme gruvbox-light")
 vim.cmd("colorscheme gruvbox")
