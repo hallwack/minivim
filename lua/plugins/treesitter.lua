@@ -32,7 +32,6 @@ require("nvim-treesitter").install({
 	"javascript",
 	"jsdoc",
 	"json",
-	"jsonc",
 	"lua",
 	"luadoc",
 	"luap",
@@ -159,6 +158,8 @@ local SKIP_FT = {
 	["grug-far"] = true,
 	trouble = true,
 }
+
+vim.treesitter.language.register("json", "jsonc")
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "*" },
