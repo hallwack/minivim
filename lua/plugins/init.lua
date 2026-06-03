@@ -1,4 +1,5 @@
 require("plugins.autopairs")
+require("plugins.caret")
 require("plugins.colorscheme")
 require("plugins.comment")
 require("plugins.completion")
