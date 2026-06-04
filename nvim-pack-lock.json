@@ -50,6 +50,10 @@
       "rev": "8e921c2b68571e978db5d4d3fef9c9a7f8755473",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "meowsoot.nvim": {
+      "rev": "b0a3d2cbdd54c7119551c8069066f2c731a0eb04",
+      "src": "https://github.com/marekh19/meowsoot.nvim"
+    },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
       "src": "https://github.com/windwp/nvim-autopairs"

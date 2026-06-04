@@ -1,6 +1,13 @@
-vim.pack.add({ "https://gitlab.com/motaz-shokry/gruvbox.nvim" })
+vim.pack.add({
+	{
+		src = "https://gitlab.com/motaz-shokry/gruvbox.nvim",
+	},
+	{
+		src = "https://github.com/marekh19/meowsoot.nvim",
+	},
+})
 
-require("gruvbox").setup({
+--[[ require("gruvbox").setup({
 	dark_variant = "hard",
 	styles = {
 		italic = false,
@@ -12,7 +19,15 @@ require("gruvbox").setup({
 			highlight.underline = true
 		end
 	end,
-})
+}) ]]
 
 -- vim.cmd("colorscheme gruvbox-light")
-vim.cmd("colorscheme gruvbox")
+-- vim.cmd("colorscheme gruvbox")
+
+require("meowsoot").setup({
+	style = "night",
+	transparent = false,
+	terminal_colors = true,
+})
+
+vim.cmd.colorscheme("meowsoot")
