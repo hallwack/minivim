@@ -31,6 +31,23 @@ function M.set_highlights()
 		bg = "#3C3836",
 		bold = true,
 	})
+
+	vim.api.nvim_set_hl(0, "MyWinbarActive", {
+		fg = "#FBF1C7",
+		bg = "NONE",
+		bold = true,
+	})
+
+	vim.api.nvim_set_hl(0, "MyWinbarInactive", {
+		fg = "#A89984",
+		bg = "NONE",
+	})
+
+	vim.api.nvim_set_hl(0, "MyWinbarModified", {
+		fg = "#FABD2F",
+		bg = "NONE",
+		bold = true,
+	})
 end
 
 local function get_icon(filename, name)
@@ -163,6 +180,41 @@ function _G.tabline()
 	return table.concat(parts)
 end
 
+function _G.winbar()
+	local win = vim.g.statusline_winid or vim.api.nvim_get_current_win()
+	if not win or not vim.api.nvim_win_is_valid(win) then
+		return ""
+	end
+
+	local bufnr = vim.api.nvim_win_get_buf(win)
+
+	if not vim.api.nvim_buf_is_loaded(bufnr) then
+		return ""
+	end
+
+	local bt = vim.bo[bufnr].buftype
+	local ft = vim.bo[bufnr].filetype
+	if bt == "nofile" or bt == "prompt" or bt == "terminal" or ft == "pack-ui" then
+		return ""
+	end
+
+	local name = vim.api.nvim_buf_get_name(bufnr)
+	local display_name = get_display_name(name)
+	local filename = (name ~= "" and vim.fn.fnamemodify(name, ":t")) or NO_NAME
+	local icon = get_icon(filename, name)
+	local modified = vim.bo[bufnr].modified and "%#MyWinbarModified# ●" or ""
+	local hl = win == vim.api.nvim_get_current_win() and "%#MyWinbarActive#" or "%#MyWinbarInactive#"
+	local content = icon .. display_name
+
+	return table.concat({
+		hl,
+		" ",
+		content,
+		modified,
+		"%*",
+	})
+end
+
 function M.setup()
 	M.set_highlights()
 
@@ -192,11 +244,13 @@ function M.setup()
 		callback = function()
 			-- force redraw tabline
 			vim.cmd.redrawtabline()
+			vim.cmd.redrawstatus()
 		end,
 	})
 	vim.opt.showtabline = 2
 
 	vim.opt.tabline = "%!v:lua.tabline()"
+	vim.opt.winbar = "%!v:lua.winbar()"
 end
 
 M.setup()
