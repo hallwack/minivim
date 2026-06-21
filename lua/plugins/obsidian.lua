@@ -11,6 +11,6 @@ require("obsidian").setup({
 		name = "snacks.picker",
 	},
 	workspaces = {
-		{ name = "Obsidian Vault", path = "~/Documents/Obsidian/Obsidian Vault" },
+		{ name = "Obsidian Vault", path = "~/Documents/Obsidian/para-obsidian" },
 	},
 })
