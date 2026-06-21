@@ -26,7 +26,7 @@ vim.pack.add({
 
 require("meowsoot").setup({
 	style = "night",
-	transparent = false,
+	transparent = true,
 	terminal_colors = true,
 })
 
