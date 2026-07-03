@@ -15,6 +15,7 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"dockerls",
 		"html",
+		"hyprls",
 		"intelephense",
 		"jsonls",
 		"laravel_ls",
