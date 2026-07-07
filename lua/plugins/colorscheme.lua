@@ -28,6 +28,9 @@ require("meowsoot").setup({
 	style = "night",
 	transparent = true,
 	terminal_colors = true,
+	styles = {
+		comments = { italic = false },
+	},
 })
 
 vim.cmd.colorscheme("meowsoot")
