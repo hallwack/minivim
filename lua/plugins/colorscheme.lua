@@ -5,6 +5,9 @@ vim.pack.add({
 	{
 		src = "https://github.com/marekh19/meowsoot.nvim",
 	},
+	{
+		src = "https://github.com/mitander/flume.nvim",
+	},
 })
 
 --[[ require("gruvbox").setup({
@@ -34,3 +37,12 @@ require("meowsoot").setup({
 })
 
 vim.cmd.colorscheme("meowsoot")
+
+-- require("flume").setup({
+-- 	transparent = false,
+-- 	styles = {
+-- 		comments = { italic = false },
+-- 	},
+-- })
+--
+-- vim.cmd.colorscheme("flume")
