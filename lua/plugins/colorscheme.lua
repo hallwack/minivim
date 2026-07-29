@@ -25,8 +25,8 @@ vim.pack.add({
 -- vim.cmd("colorscheme gruvbox")
 
 require("meowsoot").setup({
-	style = "night",
-	transparent = true,
+	style = "moon",
+	transparent = false,
 	terminal_colors = true,
 	styles = {
 		comments = { italic = false },
