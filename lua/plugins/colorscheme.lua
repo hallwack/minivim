@@ -8,6 +8,9 @@ vim.pack.add({
 	{
 		src = "https://github.com/mitander/flume.nvim",
 	},
+	{
+		src = "https://github.com/Aejkatappaja/cendre",
+	},
 })
 
 --[[ require("gruvbox").setup({
@@ -27,16 +30,16 @@ vim.pack.add({
 -- vim.cmd("colorscheme gruvbox-light")
 -- vim.cmd("colorscheme gruvbox")
 
-require("meowsoot").setup({
-	style = "moon",
-	transparent = false,
-	terminal_colors = true,
-	styles = {
-		comments = { italic = false },
-	},
-})
+-- require("meowsoot").setup({
+-- 	style = "moon",
+-- 	transparent = false,
+-- 	terminal_colors = true,
+-- 	styles = {
+-- 		comments = { italic = false },
+-- 	},
+-- })
 
-vim.cmd.colorscheme("meowsoot")
+-- vim.cmd.colorscheme("meowsoot")
 
 -- require("flume").setup({
 -- 	transparent = false,
@@ -46,3 +49,13 @@ vim.cmd.colorscheme("meowsoot")
 -- })
 --
 -- vim.cmd.colorscheme("flume")
+
+
+require("cendre").setup({
+  background = "hard",
+	transparent = true,
+  italic = false,
+  italic_comments = false,
+})
+
+vim.cmd.colorscheme("cendre")
