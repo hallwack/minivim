@@ -25,6 +25,7 @@ require("conform").setup({
 		toml = { "taplo" },
 		nix = { "nixfmt" },
 		rust = { "rustfmt" },
+    php = { "pint", "php-cs-fixer" },
 	},
 
 	formatters = {
