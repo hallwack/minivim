@@ -25,7 +25,8 @@ require("conform").setup({
 		toml = { "taplo" },
 		nix = { "nixfmt" },
 		rust = { "rustfmt" },
-    php = { "pint", "php-cs-fixer" },
+		php = { "pint", "php-cs-fixer", stop_after_first = true },
+		blade = { "blade-formatter" },
 	},
 
 	formatters = {
@@ -68,60 +69,9 @@ require("conform").setup({
 				return args
 			end,
 		},
-		prettier = {
-			args = function(_, ctx)
-				local search_dir = ctx.dirname or vim.fn.getcwd()
-				local config_files = {
-					".prettierrc",
-					".prettierrc.json",
-					".prettierrc.yaml",
-					".prettierrc.yml",
-					".prettierrc.js",
-					".prettierrc.cjs",
-					".prettierrc.mjs",
-					"prettier.config.js",
-					"prettier.config.cjs",
-					"prettier.config.mjs",
-					"prettier.config.ts",
-				}
-				-- Cache config per direktori, reset saat buf write
-				local cache = vim.b[ctx.buf or 0]._prettier_config_cache
-				if cache then
-					return { "--config", cache, "--stdin-filepath", ctx.filename }
-				end
-
-				local root_monorepo = vim.fs.root(ctx.dirname, { "turbo.json" })
-				local project_config = nil
-
-				local function find_config_in_dir(dir)
-					for _, name in ipairs(config_files) do
-						local candidate = dir .. "/" .. name
-						if vim.uv.fs_stat(candidate) then
-							return candidate
-						end
-					end
-					return nil
-				end
-
-				if root_monorepo then
-					local pkg_json = vim.fn.findfile("package.json", search_dir .. ";" .. root_monorepo)
-					local pkg_dir = pkg_json ~= "" and vim.fn.fnamemodify(pkg_json --[[@as string]], ":p:h") or search_dir
-
-					project_config = find_config_in_dir(pkg_dir) or find_config_in_dir(root_monorepo)
-				else
-					project_config = find_config_in_dir(search_dir)
-				end
-
-				local config = project_config or vim.fn.expand("~/.prettierrc")
-
-				-- Simpan ke cache
-				vim.b[ctx.buf or 0]._prettier_config_cache = config
-
-				return { "--config", config, "--stdin-filepath", ctx.filename }
-			end,
-		},
-		default_format_opts = { lsp_format = "fallback" },
 	},
+
+	default_format_opts = { lsp_format = "fallback" },
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>fi", "<cmd>ConformInfo<cr>", { desc = "Conform Info" })
