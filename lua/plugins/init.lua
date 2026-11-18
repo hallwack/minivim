@@ -1,3 +1,4 @@
+require("plugins.ai")
 require("plugins.autopairs")
 require("plugins.caret")
 require("plugins.colorscheme")

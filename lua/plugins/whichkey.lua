@@ -19,6 +19,7 @@ wk.setup({
 		},
 	},
 	spec = {
+		{ "<leader>a", group = "AI", mode = { "n", "x" } },
 		{ "<leader>c", group = "Code" },
 		{ "<leader>f", group = "Find / Format" },
 		{ "<leader>g", group = "Git" },
