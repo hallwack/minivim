@@ -19,19 +19,23 @@ map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
 map("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
 
--- Resize with arrows
-map("n", "<C-M-h>", ":vertical resize -2<CR>", { desc = "Resize window left" })
-map("n", "<C-M-l>", ":vertical resize +2<CR>", { desc = "Resize window right" })
-map("n", "<C-M-j>", ":resize +2<CR>", { desc = "Resize window down" })
-map("n", "<C-M-k>", ":resize -2<CR>", { desc = "Resize window up" })
+-- Resize windows with Alt+h/j/k/l. Also works in terminal mode, so the AI chat
+-- (sidekick) and snacks terminals can be resized without leaving insert.
+map({ "n", "t" }, "<M-h>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+map({ "n", "t" }, "<M-l>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+map({ "n", "t" }, "<M-j>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+map({ "n", "t" }, "<M-k>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 
--- Move text up and down
-map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+-- Move text up and down with Shift+Alt+j/k (plain Alt+j/k is used for resizing)
+map("n", "<M-J>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("n", "<M-K>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<M-J>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map("i", "<M-K>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<M-J>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("v", "<M-K>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+
+-- Ctrl+Backspace: delete the word before the cursor
+map({ "i", "c" }, "<C-BS>", "<C-w>", { desc = "Delete previous word" })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected text down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected text up" })
 
