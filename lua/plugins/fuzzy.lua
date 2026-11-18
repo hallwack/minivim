@@ -4,7 +4,7 @@ vim.pack.add({
 
 require("fff").setup({
 	lazy_sync = true,
-	debug = { enabled = true, show_scores = true },
+	debug = { enabled = false },
 	preview = { enabled = true },
 	keymaps = {
 		close = "<Esc>",
