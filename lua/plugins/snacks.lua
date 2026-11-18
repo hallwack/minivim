@@ -16,7 +16,7 @@ require("snacks").setup({
   picker = {
     enabled = true,
     hidden = true,
-    ignored = true,
+    ignored = false, -- toggle with <M-i> inside the picker when needed
     git_branches = {
       show_current_branch = true,
     },
