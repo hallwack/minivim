@@ -16,7 +16,8 @@ opt.shiftwidth = 2
 opt.shiftround = true
 opt.list = false
 opt.number = true
-opt.relativenumber = true opt.numberwidth = 4
+opt.relativenumber = true
+opt.numberwidth = 4
 opt.wrap = false
 opt.cursorline = true
 opt.scrolloff = 8
