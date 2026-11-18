@@ -1,4 +1,4 @@
-vim.lsp.enable({ "rust_analyzer", "gopls", "denols" })
+vim.lsp.enable({ "rust_analyzer", "gopls", "denols", "laravel_lsp" })
 
 -- LSP
 local function augroup(name)

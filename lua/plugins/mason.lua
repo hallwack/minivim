@@ -8,9 +8,10 @@ require("mason").setup({})
 
 require("mason-lspconfig").setup({
 	-- mason-lspconfig auto-enables every installed server; skip the ones we
-	-- don't want running (denols is enabled manually in config/lsp.lua)
+	-- don't want running (denols/laravel_lsp are enabled manually in config/lsp.lua;
+	-- laravel_ls is replaced by the official laravel_lsp)
 	automatic_enable = {
-		exclude = { "denols" },
+		exclude = { "denols", "laravel_ls", "laravel_lsp" },
 	},
 	ensure_installed = {
 		"lua_ls",
@@ -23,7 +24,7 @@ require("mason-lspconfig").setup({
 		"hyprls",
 		"intelephense",
 		"jsonls",
-		"laravel_ls",
+		"laravel_lsp",
 		"quick_lint_js",
 		"sqlls",
 		"svelte",
