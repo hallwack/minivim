@@ -7,6 +7,11 @@ vim.pack.add({
 require("mason").setup({})
 
 require("mason-lspconfig").setup({
+	-- mason-lspconfig auto-enables every installed server; skip the ones we
+	-- don't want running (denols is enabled manually in config/lsp.lua)
+	automatic_enable = {
+		exclude = { "denols" },
+	},
 	ensure_installed = {
 		"lua_ls",
 		"ts_ls",
