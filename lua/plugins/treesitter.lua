@@ -3,14 +3,9 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
 })
 
-require("nvim-treesitter").setup({
-	highlight = {
-		enable = true,
-	},
-	indent = {
-		enable = true,
-	},
-})
+-- nvim-treesitter (main) only installs parsers; highlight/indent are started
+-- by the FileType autocmd at the bottom of this file
+require("nvim-treesitter").setup()
 
 require("nvim-treesitter").install({
 	"bash",
