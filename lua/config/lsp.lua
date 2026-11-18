@@ -1,4 +1,4 @@
-vim.lsp.enable({ "rust_analyzer", "gopls" })
+vim.lsp.enable({ "rust_analyzer", "gopls", "denols" })
 
 -- LSP
 local function augroup(name)
@@ -83,6 +83,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				end
 			end
 		end
+	end,
+})
+
+-- Stop LSP clients that no longer have any attached buffer (e.g. after
+-- `:bd`-ing every file of a project). A grace period avoids restarting the
+-- server when you close a file and quickly open another one.
+local lsp_idle_stop_ms = vim.g.lsp_idle_stop_ms or 5 * 60 * 1000
+local lsp_idle_skip = { copilot = true } -- copilot.lua manages its own client
+
+vim.api.nvim_create_autocmd("LspDetach", {
+	group = augroup("lsp_idle_stop"),
+	callback = function(args)
+		local client_id = args.data.client_id
+		vim.defer_fn(function()
+			local client = vim.lsp.get_client_by_id(client_id)
+			if not client or lsp_idle_skip[client.name] or client:is_stopped() then
+				return
+			end
+			if vim.tbl_isempty(client.attached_buffers) then
+				client:stop()
+			end
+		end, lsp_idle_stop_ms)
 	end,
 })
 
