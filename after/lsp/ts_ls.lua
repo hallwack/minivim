@@ -6,15 +6,14 @@ return {
 		"typescript",
 		"typescriptreact",
 	},
-	root_dir = function(_, on_dir)
-		local root_path = vim.fs.find("package.json", {
-			upward = true,
-			type = "file",
-			path = vim.fn.getcwd(),
-		})[1]
-
-		if root_path then
-			on_dir(vim.fn.fnamemodify(root_path, ":h"))
+	-- resolve root from the buffer (not cwd) and stay out of Deno projects
+	root_dir = function(bufnr, on_dir)
+		if vim.fs.root(bufnr, { "deno.json", "deno.jsonc" }) then
+			return
+		end
+		local root = vim.fs.root(bufnr, { "tsconfig.json", "jsconfig.json", "package.json" })
+		if root then
+			on_dir(root)
 		end
 	end,
 	workspace_required = true,
