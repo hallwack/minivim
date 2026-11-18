@@ -8,13 +8,30 @@ vim.pack.add({
 	{ src = "https://github.com/zbirenbaum/copilot.lua" },
 })
 
-require("copilot").setup({
-	suggestion = { enabled = false },
-	panel = { enabled = false },
-	filetypes = {
-		markdown = true,
-		help = true,
-	},
+-- Lazy-load Copilot: the Node language server only spawns once you start typing
+vim.api.nvim_create_autocmd("InsertEnter", {
+	group = vim.api.nvim_create_augroup("user_copilot_lazy", { clear = true }),
+	once = true,
+	callback = function()
+		require("copilot").setup({
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+			filetypes = {
+				-- never send secrets from .env files
+				sh = function()
+					return not vim.fs.basename(vim.api.nvim_buf_get_name(0)):match("^%.env")
+				end,
+			},
+			should_attach = function(bufnr, _)
+				if not vim.bo[bufnr].buflisted or vim.bo[bufnr].buftype ~= "" then
+					return false
+				end
+				-- skip big files (minified bundles, lockfiles, dumps)
+				local ok, stat = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+				return not (ok and stat and stat.size > 100 * 1024)
+			end,
+		})
+	end,
 })
 
 require("blink.cmp").setup({
@@ -34,7 +51,6 @@ require("blink.cmp").setup({
 	},
 
 	appearance = {
-		use_nvim_cmp_as_default = true,
 		nerd_font_variant = "normal",
 	},
 
@@ -60,10 +76,10 @@ require("blink.cmp").setup({
 				module = "blink-copilot",
 				score_offset = 100,
 				async = true,
-        opts = {
-          debounce = 75,
-          max_completions = 2,
-        },
+				opts = {
+					debounce = 75,
+					max_completions = 2,
+				},
 			},
 		},
 	},
